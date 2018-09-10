@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "character_sheet_demo", "character_sheet_demo\character_sheet_demo.csproj", "{B01C7E12-3F93-4195-BF6F-DBCB37D15DDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B01C7E12-3F93-4195-BF6F-DBCB37D15DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01C7E12-3F93-4195-BF6F-DBCB37D15DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01C7E12-3F93-4195-BF6F-DBCB37D15DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01C7E12-3F93-4195-BF6F-DBCB37D15DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60B78C55-2006-4B8A-AB56-367F48E57704}
+	EndGlobalSection
+EndGlobal
