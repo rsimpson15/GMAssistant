@@ -24,8 +24,7 @@ namespace character_sheet_demo
             character.Profile = new Dictionary<string, string>();
             character.Stats = new Dictionary<string, int>();
             character.Skills = new Dictionary<string, Dictionary<string, int>>();
-            character.Traits = new List<Dictionary<string, string>>();
-            character.Other = new Dictionary<string, int>();
+
             // Add the character profile to the test character.
             character.Profile.Add("Name", "Scarlett Cooper");
             character.Profile.Add("Affiliation", "Aether");
@@ -71,34 +70,37 @@ namespace character_sheet_demo
             character.Skills["Charm"].Add("Espionage", 1);
 
             // Add trait values
-            character.Traits.Add(new Dictionary<string, string>());
-            character.Traits.Add(new Dictionary<string, string>());
-            character.Traits.Add(new Dictionary<string, string>());
-            character.Traits[0].Add("Name", "Spirit Connection");
-            character.Traits[0].Add("Cost", "2");
-            character.Traits[0].Add("Type", "Spiritual");
-            character.Traits[0].Add("Perk", 
-                "Through your connection you gain various bonuses.");
-            character.Traits[0].Add("Drawback", 
-                "When stressed or upset roll int+resolve to not suffer a " 
-                + "vision.");
-            character.Traits[1].Add("Name", "Spiritual Sensitivity");
-            character.Traits[1].Add("Cost", "2");
-            character.Traits[1].Add("Type", "Spiritual");
-            character.Traits[1].Add("Perk", "+1 dice to all Cosmosis rolls.");
-            character.Traits[1].Add("Drawback",
-                "Must roll int+resolve to not succumb to ghost's torment.");
-            character.Traits[2].Add("Name", "Brazen");
-            character.Traits[2].Add("Cost", "1");
-            character.Traits[2].Add("Type", "Personal");
-            character.Traits[2].Add("Perk", 
-                "-1 TN to charm rolls that require bravery.");
-            character.Traits[2].Add("Drawback", 
-                "+1 TN to reading others with psychology.");
+            Trait trait = new Trait();
+            Trait trait2 = new Trait();
+            Trait trait3 = new Trait();
+
+            trait.Name = "Spirit Connection";
+            trait.Cost = 2;
+            trait.Type = "Spiritual";
+            trait.Perk = new Dictionary<string, Int16>();
+            trait.Perk.Add("Through your connection you gain various bonuses.", 0);
+            trait.Drawback = new Dictionary<string, Int16>();
+            trait.Drawback.Add("When stressed or upset roll int+resolve to not suffer a vision.", 0);
+
+            trait2.Name = "Spiritual Sensitivity";
+            trait2.Cost = 2;
+            trait2.Type = "Spiritual";
+            trait2.Perk = new Dictionary<string, Int16>();
+            trait2.Perk.Add("+1 dice to all Cosmosis rolls.", 1);
+            trait2.Drawback = new Dictionary<string, Int16>();
+            trait2.Drawback.Add("Must roll int+resolve to not succumb to ghost's torment.", 0);
+
+            trait3.Name = "Brazen";
+            trait3.Cost = 1;
+            trait3.Type = "Personal";
+            trait3.Perk = new Dictionary<string, Int16>();
+            trait3.Perk.Add("-1 TN to charm rolls that require bravery.", 1);
+            trait3.Drawback = new Dictionary<string, Int16>();
+            trait3.Drawback.Add("+1 TN to reading others with psychology.", 1);
 
             // Add other values
-            character.Other.Add("Life Force", 0);
-            character.Other.Add("Cosmosis", 6);
+            character.LifeForce = 0;
+            character.Cosmosis = 0;
             Console.Write(" Done.\n\nCreating Json Object...");
 
             // Serialize to JSON using Newtonsoft Json.
@@ -165,23 +167,8 @@ namespace character_sheet_demo
             }
             // Traits
             sb.Append("\n Traits:\n");
-            for(int i = 0; i < deserializedCharacter.Traits.Count; ++i)
-            {
-                foreach (KeyValuePair<string, string> pair 
-                    in deserializedCharacter.Traits[i])
-                {
-                    sb.Append("\t\t" + pair.Key + ": " + pair.Value + '\n');
-                }
-                if (i < deserializedCharacter.Traits.Count - 1)
-                    sb.Append('\n');
-            }
-            // Other
-            foreach (KeyValuePair<string, int> pair
-                in deserializedCharacter.Other)
-            {
-                sb.Append(" " + pair.Key + ": " 
-                    + pair.Value.ToString() + '\n');
-            }
+            sb.Append("\n Traits:\n");
+
             Console.WriteLine(sb.ToString());
             Console.WriteLine("\n\nPress any key to exit...");
             Console.ReadKey();
